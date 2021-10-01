@@ -95,6 +95,7 @@ function curriedSum(numArgs) {
     }
 }
 
+// curry using apply
 Function.prototype.curry = function (numArgs) {
     let numbers = []
     let that = this;
@@ -109,6 +110,22 @@ Function.prototype.curry = function (numArgs) {
         }
     }
 }
+
+// curry using ...args
+Function.prototype.curry = function (numArgs) {
+    let numbers = []
+    let that = this;
+    console.log(that);
+    return function _curry(num) {
+        numbers.push(num);
+        if (numbers.length === numArgs) {
+            return that(...numbers);
+        } else {
+            return _curry;
+        }
+    }
+}
+
 
 
 
