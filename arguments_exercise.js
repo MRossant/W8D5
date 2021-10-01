@@ -81,3 +81,17 @@
 // // Pavlov says meow to me!
 // // true
 
+function curriedSum(numArgs) {
+    let numbers = [];
+    let sum = 0;
+    return function _curriedSum(num) {
+        numbers.push(num);
+        sum += num;
+        if (numbers.length === numArgs) {
+            return sum;
+        } else {
+            return _curriedSum;
+        }
+    }
+}
+
