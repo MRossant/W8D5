@@ -126,6 +126,21 @@ Function.prototype.curry = function (numArgs) {
     }
 }
 
+// curry using ES6
+Function.prototype.curry = function (numArgs) {
+    let numbers = [];
+    const _curry = num => {
+        numbers.push(num);
+        if (numbers.length === numArgs) {
+            return this(...numbers);
+        } else {
+            return _curry;
+        }
+    }
+
+    return _curry;
+}
+
 
 
 
