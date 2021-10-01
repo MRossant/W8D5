@@ -1,11 +1,11 @@
-// const sumNums = function () {
-//     let sum = 0;
-//     for (let i = 0; i < arguments.length; i++) { // can't use a forEach on arguments
-//          sum += arguments[i];
-//     }
+const sumNums = function () {
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) { // can't use a forEach on arguments
+         sum += arguments[i];
+    }
 
-//     return sum;
-// }
+    return sum;
+}
 
 // const sumNums = function (...args) {
 //     let sum = 0;
@@ -94,4 +94,21 @@ function curriedSum(numArgs) {
         }
     }
 }
+
+Function.prototype.curry = function (numArgs) {
+    let numbers = []
+    let that = this;
+    console.log(that);
+    return function _curry(num) {
+        numbers.push(num);
+        if (numbers.length === numArgs) {
+            console.log(numbers);
+            return that.apply(that, numbers);
+        } else {
+            return _curry;
+        }
+    }
+}
+
+
 
